@@ -16,6 +16,7 @@ Write in plain, direct English, short paragraphs, no em dashes. Dutch only when 
 | What | Where |
 |---|---|
 | Living playbook (voices, blueprint, topics, drafts, reviews) | Claude Doc "LinkedIn Voices & Post Playbook": https://claude.ai/code/artifact/a4847c8e-9cb2-4e17-b654-3cc0f42cc841 |
+| Dashboard (live, shared) | Artifact "Hyperscout LinkedIn Studio": https://claude.ai/artifact/BvZNXxkkpqpZJBzZqoevea, updated through the ArtifactData tool (see Dashboard data below) |
 | Blueprint (static copy) | `references/blueprint.md` |
 | Voices to watch and searches | `references/voices.md` |
 | Top 30 fashion business sites | `references/sources.md` |
@@ -24,6 +25,17 @@ Write in plain, direct English, short paragraphs, no em dashes. Dutch only when 
 Read the doc first with the Claude Docs tools (`guide` topic.index, then read the doc; read only the sections you need). The doc wins over the static files when they differ. When you change the doc, change only the section you were asked to change and keep every edit Jan made.
 
 LinkedIn is read in Jan's own Chrome through Claude in Chrome (load the tools with one ToolSearch call; if two browsers are connected and nobody is there to ask, use "Browser 1"). Read only, except scheduling posts Jan approved in Job 2 Step 4: never like, comment, follow, connect or message, and never publish or schedule without Jan's clear yes for that post. If Chrome cannot be reached, use web search and say so at the top of the output.
+
+## Dashboard data
+
+The dashboard reads its own database; write to it with the ArtifactData tool (load it with ToolSearch), url https://claude.ai/artifact/BvZNXxkkpqpZJBzZqoevea. Read a document before changing it and pass its `version` as `if_version`; use one `batch` for several writes.
+
+- `dash/meta`: `{updated, windowStart, windowEnd, windowLabel, nextReview, note}`. Set `updated` to today on every run.
+- `dash/plan`: `{status, step (0 to 5), waitingOnJan (true/false), nextRun, period, goal, target, concepts: [{day, title, firstLine, format, visual, status}]}`. `status` per concept is one of concept, approved, written, scheduled, live, dropped. Update it at every step of Job 2, so Jan sees where the plan stands and what waits on him.
+- `posts` (one document per post, id `YYYY-MM-DD-slug`): `{date, short (max 38 characters), first, format, impressions, reactions, comments, reposts, repost (true for reposts)}`. Keep only the last 8 weeks: add new posts, refresh numbers, delete posts older than 8 weeks.
+- `dash/analysis`: `{headline, points: [{title, body}], best: [{title, why}], worst: [{title, why}], next}`. Rewrite it after each monthly review: the best posts of the last 8 weeks and a short reading of why they worked.
+- `leads` (one per brand): `{brand, market, seen, seenLabel, note, url}`. Add warm leads from each plan; delete leads older than 8 weeks.
+- `voices` (one per voice): `{rank, name, role, lane, followers, watch, url}`. Refresh with Job 3.
 
 ## Hard rules for every post
 
@@ -68,7 +80,7 @@ Then ask Jan to approve each post and visual, or say what to change.
 
 **Step 4. Schedule on LinkedIn.** Only for posts Jan approved in Step 3. In Jan's Chrome (Claude in Chrome): open LinkedIn, start a post (from Jan's profile, or as the Hyperscout page for page posts), paste the approved text exactly, upload the visual (Chrome file upload), open the clock icon and set the approved date and time. Before clicking "Schedule", ask Jan in chat for each post: "Ready to schedule: <first line>, with <image/video>, <day date time>. Confirm?" Click "Schedule" only after a clear yes for that post. Never publish immediately, never schedule a post Jan did not approve, never change the text after approval without asking.
 
-**Step 5. Log.** Mark each post in the doc as scheduled with its date and time. Remind Jan that the source link goes in the first comment right after the post goes live (LinkedIn does not schedule comments), and add a one-line reminder per post to his list.
+**Step 5. Log.** Mark each post in the doc and on the dashboard (`dash/plan`) as scheduled with its date and time. Remind Jan that the source link goes in the first comment right after the post goes live (LinkedIn does not schedule comments), and add a one-line reminder per post to his list.
 
 ## Job 3: refresh the voices (first post plan of each month)
 
@@ -82,4 +94,5 @@ Follow `references/review.md`. In short:
 2. Mark each post good, average or poor against the benchmarks in `references/review.md`, and say in one line why (format, first line, name or number missing, timing, too many posts that week).
 3. Rewrite: for every planned or recent draft in the doc that shares a poor post's pattern, give a fixed version.
 4. New ideas: 5 post ideas built on what worked best this month, each with format, first line and source.
-5. Write it into the doc as "Monthly review <month year>" and send Jan a short message with the best post, the worst post, the one change for next month, and that the review is in the doc.
+5. Update the dashboard: refresh `posts` for the last 8 weeks and rewrite `dash/analysis` and `dash/meta`.
+6. Write it into the doc as "Monthly review <month year>" and send Jan a short message with the best post, the worst post, the one change for next month, and that the review is in the doc.

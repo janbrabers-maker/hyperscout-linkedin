@@ -9,7 +9,7 @@ The LinkedIn tool for Jan Brabers and the Hyperscout page. One goal: get fashion
 - **Voices to watch**: refreshed with the first radar of each month.
 - **End-of-month review**: which posts by Jan and the Hyperscout page worked or flopped, fixes for drafts that repeat a poor pattern, and five new ideas from what worked.
 
-Plans, posts and reviews land in the shared Claude Doc "LinkedIn Voices & Post Playbook". Jan gets a short message each time.
+Live dashboard: https://claude.ai/artifact/BvZNXxkkpqpZJBzZqoevea (plan status, last 8 weeks with analysis, pipeline, leads, voices). Plans, posts and reviews also land in the shared Claude Doc "LinkedIn Voices & Post Playbook". Jan gets a short message each time.
 
 ## Ask for something
 
