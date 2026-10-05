@@ -68,6 +68,6 @@ What it says:
 - Read aloud once
 - Not more than 2 posts this week
 
-## Page and team
+## The Hyperscout page
 
-The Hyperscout page reposts Jan's format 1 and 3 posts with one line of its own and posts format 4 news. Team members post format 2 and 3 in the same style: Richard from the shows he visits, Sara from her calls with brands.
+The Hyperscout page reposts Jan's format 1 and 3 posts with one line of its own and posts format 4 news.

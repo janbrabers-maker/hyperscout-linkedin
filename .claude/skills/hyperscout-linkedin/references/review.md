@@ -1,12 +1,11 @@
 # End-of-month review
 
-Run on the last day of each month. Covers every post published that month by Jan, the Hyperscout company page and the team.
+Run on the last day of each month. Covers every post published that month by Jan and the Hyperscout company page. Team members can be added later.
 
 ## 1. Collect
 
 - Jan: linkedin.com/analytics/creator/top-posts/?metricType=IMPRESSIONS&timeRange=past_28_days (falls back to past_90_days and filter by date). Note per post: date, first line, impressions, reactions, comments, reposts, format.
 - Hyperscout page: the company page analytics (Jan's account is admin) or the page's posts list. Find the page by searching "Hyperscout" on LinkedIn if no link is stored.
-- Team: Richard van den Berg (DCBERG, Hyperscout) and any other team member Jan names; read their recent-activity pages for posts about Hyperscout, fashion wholesale or the shows. Impressions are only visible to the author; for team posts use reactions, comments and reposts.
 
 ## 2. Judge
 
@@ -20,7 +19,7 @@ Benchmarks for Jan (from his own past year):
 | Milestone and ask | 2,500+ impressions or 10+ reposts | under 1,000 impressions |
 | Any post | 5+ comments is good | 0 comments and under 500 impressions is poor |
 
-For the page and team, compare with their own last three months. Engagement that matters most: comments and messages from brand owners and wholesale directors (check who commented, not just how many).
+For the page, compare with their own last three months. Engagement that matters most: comments and messages from brand owners and wholesale directors (check who commented, not just how many).
 
 For every poor post, name the cause in one line: no name or number in the first line, abstract message, about the tech, too many posts that week, weekday or hour, no people tagged, question too wide, link in the body.
 
