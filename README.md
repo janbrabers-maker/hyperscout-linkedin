@@ -18,6 +18,7 @@ Open this repository in Claude Code and ask, for example:
 - "Draft a post on the Galeria insolvency for brand owners"
 - "Fix this post: [paste]"
 - "Start a new two-week post plan"
+- "Draft my inbox" (topics and links you added on the dashboard)
 - "What worked this month?"
 - "Turn radar topic 3 into a buyer's chair post"
 

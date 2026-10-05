@@ -35,6 +35,7 @@ The dashboard reads its own database; write to it with the ArtifactData tool (lo
 - `posts` (one document per post, id `YYYY-MM-DD-slug`): `{date, short (max 38 characters), first, format, impressions, reactions, comments, reposts, repost (true for reposts)}`. Keep only the last 8 weeks: add new posts, refresh numbers, delete posts older than 8 weeks.
 - `dash/analysis`: `{headline, points: [{title, body}], best: [{title, why}], worst: [{title, why}], next}`. Rewrite it after each monthly review: the best posts of the last 8 weeks and a short reading of why they worked.
 - `leads` (one per brand): `{brand, market, seen, seenLabel, note, url}`. Add warm leads from each plan; delete leads older than 8 weeks.
+- `ideas` (Jan's topic inbox, one per topic): `{url, topic, title, like, reader, story, when (next-plan, asap, later), status (needs-input, new, in-plan, drafted, used, dropped), addedAt, addedFrom, claudeNote}`. Jan adds these from the dashboard.
 - `voices` (one per voice): `{rank, name, role, lane, followers, watch, url}`. Refresh with Job 3.
 
 ## Hard rules for every post
@@ -54,6 +55,14 @@ The dashboard reads its own database; write to it with the ArtifactData tool (lo
 
 If Jan's input is thin (no number, no story), ask one question for the missing piece rather than inventing it. Never invent a story, a number or a quote.
 
+## Job 1b: topic inbox ("draft my inbox", or a link Jan pastes)
+
+Jan adds links and topics he likes, from the dashboard or in chat.
+1. Read the `ideas` collection (or take the link from chat). Open every link and read the article; note the key facts and numbers.
+2. If Jan has not said what he likes about it (`like` is empty), ask him before drafting, in one short message: what caught his eye, who should read it, and whether he has his own story or experience with it. Give 2 or 3 suggested angles drawn from the article and from his blueprint (for example a link to an earlier post of his on the same subject). Wait for his answer.
+3. Draft the post from his answers (Job 1 rules), with two alternative first lines and the source for the first comment. Propose the visual.
+4. Write back to the idea: fill `like`, `reader`, `story` from his answers, set `status` to drafted, and put a one-line summary in `claudeNote`. A link added in chat is saved to `ideas` first.
+
 ## Job 2: two-week post plan (every other Monday at 10:00, or on request)
 
 Every two weeks Jan gets a new set of posts, in five steps. Each step waits for Jan. If nobody is there to answer, send the question with SendUserMessage and stop; continue when Jan replies in the same session.
@@ -65,7 +74,7 @@ Every two weeks Jan gets a new set of posts, in five steps. Each step waits for 
 **Step 2. Concepts.** Run the topic radar for the last 14 days:
 - LinkedIn: the voices in `references/voices.md` and the searches listed there.
 - The 30 sites in `references/sources.md` (web search and fetch; skip any blocked site and say so).
-Keep only topics on fashion wholesale, business development in fashion, or fashion AI where it changes how brands sell or find retailers, and that serve the goal and the target group. Then propose 6 post concepts for the two weeks (Jan posts at most 4 of them, 2 a week; the rest can go to the Hyperscout page). Per concept: format, first line, Jan's angle (the turn), source link (opened), why it moves this target group toward the goal, the visual you would make (image or video, and why), and a suggested day and time (Tuesday to Thursday, 08:00 to 09:30 CET). Also list warm leads (brands publicly looking for sales agents or distributors, with link) and competitor moves (Kingpin, Landfall, JOOR, NuORDER, new matchmaking players). Write it into the doc as "Post plan <start date> to <end date>" and ask Jan which concepts he approves and what to change.
+Keep only topics on fashion wholesale, business development in fashion, or fashion AI where it changes how brands sell or find retailers, and that serve the goal and the target group. Start from Jan's topic inbox: every open idea in `ideas` with when next-plan or asap becomes a concept first (ask the Job 1b questions for any idea marked needs-input), then mark it in-plan. Then fill up to 6 post concepts for the two weeks (Jan posts at most 4 of them, 2 a week; the rest can go to the Hyperscout page). Per concept: format, first line, Jan's angle (the turn), source link (opened), why it moves this target group toward the goal, the visual you would make (image or video, and why), and a suggested day and time (Tuesday to Thursday, 08:00 to 09:30 CET). Also list warm leads (brands publicly looking for sales agents or distributors, with link) and competitor moves (Kingpin, Landfall, JOOR, NuORDER, new matchmaking players). Write it into the doc as "Post plan <start date> to <end date>" and ask Jan which concepts he approves and what to change.
 
 **Step 3. Posts and visuals.** For each approved concept:
 - Write the finished post in Jan's blueprint (Job 1 rules and the checklist).
