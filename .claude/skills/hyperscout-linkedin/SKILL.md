@@ -1,6 +1,6 @@
 ---
 name: hyperscout-linkedin
-description: Hyperscout's LinkedIn studio for Jan Brabers and the Hyperscout page. Use to draft or fix a LinkedIn post in Jan's blueprint, run the two-week post plan (brief, topic radar, concepts, posts with image or video, scheduling on LinkedIn), refresh the voices to watch, or run the end-of-month review of what worked and what flopped.
+description: Hyperscout's LinkedIn studio for Jan Brabers and the Hyperscout page. Use to draft or fix a LinkedIn post in Jan's blueprint, run the two-week post plan (brief, topic radar, concepts, posts with image or video, scheduling on LinkedIn), run the daily sales radar (warm leads emailed to Sara, connection invites on ICP), refresh the voices to watch, or run the end-of-month review of what worked and what flopped.
 ---
 
 # Hyperscout LinkedIn studio
@@ -24,7 +24,7 @@ Write in plain, direct English, short paragraphs, no em dashes. Dutch only when 
 
 Read the doc first with the Claude Docs tools (`guide` topic.index, then read the doc; read only the sections you need). The doc wins over the static files when they differ. When you change the doc, change only the section you were asked to change and keep every edit Jan made.
 
-LinkedIn is read in Jan's own Chrome through Claude in Chrome (load the tools with one ToolSearch call; if two browsers are connected and nobody is there to ask, use "Browser 1"). Read only, except scheduling posts Jan approved in Job 2 Step 4: never like, comment, follow, connect or message, and never publish or schedule without Jan's clear yes for that post. If Chrome cannot be reached, use web search and say so at the top of the output.
+LinkedIn is read in Jan's own Chrome through Claude in Chrome (load the tools with one ToolSearch call; if two browsers are connected and nobody is there to ask, use "Browser 1"). Read only, except scheduling posts Jan approved (Job 1b and Job 2 Step 4): never like, comment, follow, connect or message, and never publish or schedule without Jan's clear yes for that post. If Chrome cannot be reached, use web search and say so at the top of the output.
 
 ## Dashboard data
 
@@ -34,8 +34,9 @@ The dashboard reads its own database; write to it with the ArtifactData tool (lo
 - `dash/plan`: `{status, step (0 to 5), waitingOnJan (true/false), nextRun, period, goal, target, concepts: [{day, title, firstLine, format, visual, status}]}`. `status` per concept is one of concept, approved, written, scheduled, live, dropped. Update it at every step of Job 2, so Jan sees where the plan stands and what waits on him.
 - `posts` (one document per post, id `YYYY-MM-DD-slug`): `{date, short (max 38 characters), first, format, impressions, reactions, comments, reposts, repost (true for reposts)}`. Keep only the last 8 weeks: add new posts, refresh numbers, delete posts older than 8 weeks.
 - `dash/analysis`: `{headline, points: [{title, body}], best: [{title, why}], worst: [{title, why}], next}`. Rewrite it after each monthly review: the best posts of the last 8 weeks and a short reading of why they worked.
-- `leads` (one per brand): `{brand, market, seen, seenLabel, note, url}`. Add warm leads from each plan; delete leads older than 8 weeks.
-- `ideas` (Jan's topic inbox, one per topic): `{url, topic, title, like, reader, story, when (next-plan, asap, later), status (needs-input, new, in-plan, drafted, used, dropped), addedAt, addedFrom, claudeNote}`. Jan adds these from the dashboard.
+- `leads` (one per brand, id = brand slug): `{brand, market, note, seen, seenLabel, website, postUrl, url, person, personTitle, personUrl, email, phone, source, sentToSaraAt}`. Filled by the daily sales radar (Job 5); delete leads older than 8 weeks.
+- `invites` (daily connection-invite list, id `YYYY-MM-DD-slug`): `{date, rank, name, title, brand, country, profileUrl, website, why, note, status (todo, sent, skip), doneAt}`. Jan ticks Sent or Skip on the dashboard; delete after 14 days.
+- `ideas` (Jan's topic inbox, one per topic): `{url, topic, title, like, reader, story, when (next-plan, asap, later), status (needs-input, new, in-plan, drafted, approved, used, dropped), draft, postDay, format, visual, addedAt, addedFrom, claudeNote}`. Jan adds these from the dashboard. Always store the full post text in `draft` when you draft one, so Jan can read and approve it on the dashboard.
 - `voices` (one per voice): `{rank, name, role, lane, followers, watch, url}`. Refresh with Job 3.
 
 ## Hard rules for every post
@@ -61,7 +62,8 @@ Jan adds links and topics he likes, from the dashboard or in chat.
 1. Read the `ideas` collection (or take the link from chat). Open every link and read the article; note the key facts and numbers.
 2. If Jan has not said what he likes about it (`like` is empty), ask him before drafting, in one short message: what caught his eye, who should read it, and whether he has his own story or experience with it. Give 2 or 3 suggested angles drawn from the article and from his blueprint (for example a link to an earlier post of his on the same subject). Wait for his answer.
 3. Draft the post from his answers (Job 1 rules), with two alternative first lines and the source for the first comment. Propose the visual.
-4. Write back to the idea: fill `like`, `reader`, `story` from his answers, set `status` to drafted, and put a one-line summary in `claudeNote`. A link added in chat is saved to `ideas` first.
+4. Write back to the idea: fill `like`, `reader`, `story` from his answers, put the full post in `draft`, the suggested slot in `postDay`, set `status` to drafted, and put a one-line summary in `claudeNote`. A link added in chat is saved to `ideas` first.
+5. Jan approves on the dashboard (the Approve button sets the idea to approved and adds it to `dash/plan.concepts` with status approved), or in chat. Then make the visual (Job 2 Step 3 rules), send it with the exact text and ask "Ready to schedule: <first line>, with <visual>, <day date time>. Confirm?". Schedule only after his clear yes (Job 2 Step 4), then set the concept to scheduled and the idea to used. The daily sales radar picks up approved ideas every weekday.
 
 ## Job 2: two-week post plan (every other Monday at 10:00, or on request)
 
@@ -90,6 +92,15 @@ Then ask Jan to approve each post and visual, or say what to change.
 **Step 4. Schedule on LinkedIn.** Only for posts Jan approved in Step 3. In Jan's Chrome (Claude in Chrome): open LinkedIn, start a post (from Jan's profile, or as the Hyperscout page for page posts), paste the approved text exactly, upload the visual (Chrome file upload), open the clock icon and set the approved date and time. Before clicking "Schedule", ask Jan in chat for each post: "Ready to schedule: <first line>, with <image/video>, <day date time>. Confirm?" Click "Schedule" only after a clear yes for that post. Never publish immediately, never schedule a post Jan did not approve, never change the text after approval without asking.
 
 **Step 5. Log.** Mark each post in the doc and on the dashboard (`dash/plan`) as scheduled with its date and time. Remind Jan that the source link goes in the first comment right after the post goes live (LinkedIn does not schedule comments), and add a one-line reminder per post to his list.
+
+## Job 5: daily sales radar (weekdays 09:22, scheduled task "Daily sales radar: warm leads and invites")
+
+Replaces the old 07:45 outreach list. Four parts:
+- **Warm leads.** LinkedIn content search (past 24 hours, past week on Monday) for fashion brands asking for agents, distributors, new markets or new stores. Brands only: no manufacturers, mills, showrooms, agencies, retailers or job ads. Get website, post link, poster profile, then the poster's email (Apollo waterfall first, Lusha second, brand contact page last; max 10 lookups a day, approved by Jan). Email sara@hyperscoutbv.com from Jan's Outlook, one per brand, subject "brand <Name> looking for agents or new markets". Log to `leads`.
+- **Connection invites.** 15 a day on ICP (European fashion brands, 5 to 500 people, selling or aiming abroad through multi-brand retail; no outdoor gear) and ideal buyer (founder, owner, CEO, MD, head of sales, wholesale, export or business development), not yet connected, one per brand, with a connect note of max 200 characters. Log to `invites` and the Tracker in the Google Sheet "Hyperscout_LinkedIn_Outreach".
+- **Follow-ups** due in the Tracker (comments and DMs).
+- **Approved inbox posts** (Job 1b step 5).
+Jan sends invites, comments and DMs himself; never connect or message on his behalf.
 
 ## Job 3: refresh the voices (first post plan of each month)
 
