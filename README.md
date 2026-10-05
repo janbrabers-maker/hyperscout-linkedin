@@ -5,11 +5,11 @@ The LinkedIn tool for Jan Brabers and the Hyperscout page. One goal: get fashion
 ## What it does
 
 - **Drafts and fixes posts** in Jan's blueprint, built from his own best posts of the past year.
-- **Topic radar** every other Monday at 10:00: new topics from LinkedIn and 30 fashion business sites, on fashion wholesale, business development in fashion and fashion AI, each with an angle, a format and a first line, plus warm leads (brands looking for agents) and competitor moves.
+- **Two-week post plan** every other Monday at 10:00: first asks Jan's goal and target group for the next two weeks, then proposes post concepts from LinkedIn and 30 fashion business sites (fashion wholesale, business development, fashion AI). After Jan approves, it writes the posts, makes an image or short video for each, and after a final yes per post schedules them on LinkedIn.
 - **Voices to watch**: refreshed with the first radar of each month.
 - **End-of-month review**: which posts by Jan and the Hyperscout page worked or flopped, fixes for drafts that repeat a poor pattern, and five new ideas from what worked.
 
-Everything lands in the shared Claude Doc "LinkedIn Voices & Post Playbook". Jan gets a short message each time.
+Plans, posts and reviews land in the shared Claude Doc "LinkedIn Voices & Post Playbook". Jan gets a short message each time.
 
 ## Ask for something
 
@@ -17,7 +17,7 @@ Open this repository in Claude Code and ask, for example:
 
 - "Draft a post on the Galeria insolvency for brand owners"
 - "Fix this post: [paste]"
-- "Run the topic radar now"
+- "Start a new two-week post plan"
 - "What worked this month?"
 - "Turn radar topic 3 into a buyer's chair post"
 

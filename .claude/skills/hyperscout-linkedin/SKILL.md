@@ -1,6 +1,6 @@
 ---
 name: hyperscout-linkedin
-description: Hyperscout's LinkedIn studio for Jan Brabers and the Hyperscout page. Use to draft or fix a LinkedIn post in Jan's blueprint, run the biweekly topic radar (fashion wholesale, business development in fashion, fashion AI), refresh the voices to watch, or run the end-of-month review of what worked and what flopped.
+description: Hyperscout's LinkedIn studio for Jan Brabers and the Hyperscout page. Use to draft or fix a LinkedIn post in Jan's blueprint, run the two-week post plan (brief, topic radar, concepts, posts with image or video, scheduling on LinkedIn), refresh the voices to watch, or run the end-of-month review of what worked and what flopped.
 ---
 
 # Hyperscout LinkedIn studio
@@ -23,7 +23,7 @@ Write in plain, direct English, short paragraphs, no em dashes. Dutch only when 
 
 Read the doc first with the Claude Docs tools (`guide` topic.index, then read the doc; read only the sections you need). The doc wins over the static files when they differ. When you change the doc, change only the section you were asked to change and keep every edit Jan made.
 
-LinkedIn is read in Jan's own Chrome through Claude in Chrome (load the tools with one ToolSearch call; if two browsers are connected and nobody is there to ask, use "Browser 1"). Read only: never like, comment, follow, connect, message or post. If Chrome cannot be reached, use web search and say so at the top of the output.
+LinkedIn is read in Jan's own Chrome through Claude in Chrome (load the tools with one ToolSearch call; if two browsers are connected and nobody is there to ask, use "Browser 1"). Read only, except scheduling posts Jan approved in Job 2 Step 4: never like, comment, follow, connect or message, and never publish or schedule without Jan's clear yes for that post. If Chrome cannot be reached, use web search and say so at the top of the output.
 
 ## Hard rules for every post
 
@@ -42,19 +42,35 @@ LinkedIn is read in Jan's own Chrome through Claude in Chrome (load the tools wi
 
 If Jan's input is thin (no number, no story), ask one question for the missing piece rather than inventing it. Never invent a story, a number or a quote.
 
-## Job 2: topic radar (every other Monday at 10:00, or on request)
+## Job 2: two-week post plan (every other Monday at 10:00, or on request)
 
-1. Scan the last 14 days:
-   - LinkedIn: the voices in `references/voices.md` and the searches listed there.
-   - The 30 sites in `references/sources.md` (web search and fetch; skip any site that is blocked and say so).
-2. Keep only topics in the three lanes: fashion wholesale, business development in fashion (new markets, agents, distributors, trade shows, retail health), fashion AI (only where it changes how brands sell or find retailers).
-3. Pick the 6 to 8 strongest topics. A topic is strong when it has a famous name or a hard number, is less than 14 days old, and gives a brand owner a reason to act.
-4. For each topic give: the headline in one line, the source link, why it matters to a brand owner, Jan's angle (the turn), the format, a ready first line, and whether it suits Jan or the Hyperscout page.
-5. Add: brands seen publicly looking for sales agents or distributors (name, market, link; these are warm leads), and any move by competitors (Kingpin, Landfall, JOOR, NuORDER, any new matchmaking player).
-6. Write it into the doc as a new section at the end headed "Topic radar <date>", newest on top of older radars. Then turn the top 2 topics into finished drafts under it.
-7. Send Jan a short message (SendUserMessage, under 120 words): the 3 topics to post first, any competitor move, the number of agent-wanted leads, and that the full radar is in the doc.
+Every two weeks Jan gets a new set of posts, in five steps. Each step waits for Jan. If nobody is there to answer, send the question with SendUserMessage and stop; continue when Jan replies in the same session.
 
-## Job 3: refresh the voices (first radar of each month)
+**Step 1. Brief.** Ask Jan two questions before anything else, with AskUserQuestion when available (else in a message), offering 2 or 3 suggestions from the calendar (shows, order deadlines, raise, partner news) and the last monthly review:
+- What is your goal for the next two weeks? (for example: meetings booked for a show, brand sign-ups, a partner announcement, investor attention)
+- Who is the target group? (for example: owners of premium womenswear brands in DACH, wholesale directors of Nordic menswear brands)
+
+**Step 2. Concepts.** Run the topic radar for the last 14 days:
+- LinkedIn: the voices in `references/voices.md` and the searches listed there.
+- The 30 sites in `references/sources.md` (web search and fetch; skip any blocked site and say so).
+Keep only topics on fashion wholesale, business development in fashion, or fashion AI where it changes how brands sell or find retailers, and that serve the goal and the target group. Then propose 6 post concepts for the two weeks (Jan posts at most 4 of them, 2 a week; the rest can go to the Hyperscout page). Per concept: format, first line, Jan's angle (the turn), source link (opened), why it moves this target group toward the goal, the visual you would make (image or video, and why), and a suggested day and time (Tuesday to Thursday, 08:00 to 09:30 CET). Also list warm leads (brands publicly looking for sales agents or distributors, with link) and competitor moves (Kingpin, Landfall, JOOR, NuORDER, new matchmaking players). Write it into the doc as "Post plan <start date> to <end date>" and ask Jan which concepts he approves and what to change.
+
+**Step 3. Posts and visuals.** For each approved concept:
+- Write the finished post in Jan's blueprint (Job 1 rules and the checklist).
+- Make the visual that fits best:
+  - Famous name or hard number: a clean image card with the one sourced number and a short line, in Hyperscout colours (dark blue and beige, Space Grotesk headings, DM Sans text). Made with KREA image generation or built as an image from code; every number on it must match the source.
+  - Buyer's chair story: an atmospheric image (shop floor, a buying trip, a detail like the belt display), no real people's faces, no other brands' logos.
+  - On the floor: Jan's own photo from the show. Ask him for it; never generate a fake event photo.
+  - Milestone, or an idea that needs explaining in steps: a short video (15 to 30 seconds) with Motionvid, in Hyperscout colours, captions on, no voice unless Jan asks.
+  - Never put client names, invented numbers or em dashes on a visual.
+- Add the post text and the visual link to the doc under the plan, and send the visuals to Jan with SendUserFile.
+Then ask Jan to approve each post and visual, or say what to change.
+
+**Step 4. Schedule on LinkedIn.** Only for posts Jan approved in Step 3. In Jan's Chrome (Claude in Chrome): open LinkedIn, start a post (from Jan's profile, or as the Hyperscout page for page posts), paste the approved text exactly, upload the visual (Chrome file upload), open the clock icon and set the approved date and time. Before clicking "Schedule", ask Jan in chat for each post: "Ready to schedule: <first line>, with <image/video>, <day date time>. Confirm?" Click "Schedule" only after a clear yes for that post. Never publish immediately, never schedule a post Jan did not approve, never change the text after approval without asking.
+
+**Step 5. Log.** Mark each post in the doc as scheduled with its date and time. Remind Jan that the source link goes in the first comment right after the post goes live (LinkedIn does not schedule comments), and add a one-line reminder per post to his list.
+
+## Job 3: refresh the voices (first post plan of each month)
 
 Update the "Top voices to watch" table in the doc: follower counts, typical and best recent post, what to watch. Add a voice only with real engagement on brand-side wholesale, business development or fashion AI (30+ reactions per post, about 2,000+ followers). Drop a voice with a one-line reason. Update `references/voices.md` only when a repo session can commit.
 
