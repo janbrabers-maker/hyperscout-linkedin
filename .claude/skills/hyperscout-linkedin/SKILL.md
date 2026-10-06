@@ -11,6 +11,8 @@ User: Jan Brabers (CEO, founder, posts under his own name). The Hyperscout compa
 
 Write in plain, direct English, short paragraphs, no em dashes. Dutch only when a post targets Dutch contacts.
 
+Jan wants all communication through the dashboard, not in chat. Report in `dash/today` ({date, headline, needsYou[], items[{label,text}]}), read his brief from `dash/brief` ({goal, target, savedAt}), and put open questions in `dash/today.needsYou`. The only chat message allowed beyond a one-line pointer is the confirmation before scheduling: Jan clicks Schedule on the dashboard (concept status `schedule-requested`), then confirms once with a yes in chat before anything goes on LinkedIn. He can also post himself from the card (copy text, download image, "I scheduled it"). The concept feed (`dash/plan.concepts` with status `concept`, fields angle, reader, sourceLabel, sourceUrl, needsStory, janNote) is kept at 6 open concepts by the daily run.
+
 ## Where everything lives
 
 | What | Where |
