@@ -21,6 +21,7 @@ Jan wants all communication through the dashboard, not in chat. Report in `dash/
 | Dashboard (live, shared) | Artifact "Hyperscout LinkedIn Studio": https://claude.ai/artifact/BvZNXxkkpqpZJBzZqoevea, updated through the ArtifactData tool (see Dashboard data below) |
 | Blueprint (static copy) | `references/blueprint.md` |
 | Voices to watch and searches | `references/voices.md` |
+| News radar (main topic input, updated weekly) | Google Sheet "Hyperscout | Fashion business news radar" (ID 15JqyIFXnr2CcDHxS6g-8BoYa4O8XKRp8qBHJTmV9bVs), tabs Weekly picks and Outlets; only write column M Status; check every number on the article, the summaries can be wrong |
 | Top 30 fashion business sites | `references/sources.md` |
 | Review method and benchmarks | `references/review.md` |
 | Outreach logbook (every invite sent, every warm lead) | Google Sheet "LinkedIn invite logbook" (ID 1hlTzbdLOah5vFCE_P4WTjuJdYfiYKqZUDen91aEZssc), tabs Invite log, Warm leads, Monthly summary (formulas) |
@@ -84,7 +85,7 @@ Keep only topics on fashion wholesale, business development in fashion, or fashi
 
 **Step 3. Posts and visuals.** For each approved concept:
 - Write the finished post in Jan's blueprint (Job 1 rules and the checklist).
-- Make the visual that fits best:
+- Make two visuals for every post: one photo with Krea (model krea/krea-2/large, 1:1, 1K; editorial scene, navy and beige tones, no faces, logos or text) and one number card by Claude in the style of Jan's current posts (1200x1200, dark blue and beige, Space Grotesk and DM Sans, one big sourced number, source line). Store both in the concept's `visuals` ([{url, source claude|krea}]); Jan picks Number card, Photo or Both (`useVisuals`) on the dashboard. Other formats as below:
   - Famous name or hard number: a clean image card with the one sourced number and a short line, in Hyperscout colours (dark blue and beige, Space Grotesk headings, DM Sans text). Made with KREA image generation or built as an image from code; every number on it must match the source.
   - Buyer's chair story: an atmospheric image (shop floor, a buying trip, a detail like the belt display), no real people's faces, no other brands' logos.
   - On the floor: Jan's own photo from the show. Ask him for it; never generate a fake event photo.
