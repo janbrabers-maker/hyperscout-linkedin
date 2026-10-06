@@ -21,6 +21,8 @@ Write in plain, direct English, short paragraphs, no em dashes. Dutch only when 
 | Voices to watch and searches | `references/voices.md` |
 | Top 30 fashion business sites | `references/sources.md` |
 | Review method and benchmarks | `references/review.md` |
+| Outreach logbook (every invite sent, every warm lead) | Google Sheet "LinkedIn invite logbook" (ID 1hlTzbdLOah5vFCE_P4WTjuJdYfiYKqZUDen91aEZssc), tabs Invite log, Warm leads, Monthly summary (formulas) |
+| Monthly outreach reports | Drive folder "Hyperscout LinkedIn Outreach" / Monthly reports (https://drive.google.com/drive/folders/1nuH3wK5E5x70_4e503oUSjBt4NpJloeu) |
 
 Read the doc first with the Claude Docs tools (`guide` topic.index, then read the doc; read only the sections you need). The doc wins over the static files when they differ. When you change the doc, change only the section you were asked to change and keep every edit Jan made.
 
@@ -100,6 +102,7 @@ Replaces the old 07:45 outreach list. Four parts:
 - **Connection invites.** 15 a day on ICP (European fashion brands, 5 to 500 people, selling or aiming abroad through multi-brand retail; no outdoor gear) and ideal buyer (founder, owner, CEO, MD, head of sales, wholesale, export or business development), not yet connected, one per brand, with a connect note of max 200 characters. Log to `invites` and the Tracker in the Google Sheet "Hyperscout_LinkedIn_Outreach".
 - **Follow-ups** due in the Tracker (comments and DMs).
 - **Approved inbox posts** (Job 1b step 5).
+Every invite Jan sends (ticked Sent on the dashboard) and every warm lead is logged in the outreach logbook; acceptances are checked in Chrome from day 3, "Not accepted" after 21 days. On the last day of each month the scheduled task "LinkedIn outreach monthly report" writes a Google Doc report to the Monthly reports folder and links it on the dashboard (`dash/meta.lastOutreachReport`).
 Jan sends invites, comments and DMs himself; never connect or message on his behalf.
 
 ## Job 3: refresh the voices (first post plan of each month)
